@@ -6,7 +6,7 @@ const ClienteController = require('./controllers/ClienteController');
 const ProdutoController = require('./controllers/ProdutoController');
 const PedidoController = require('./controllers/PedidoController');
 
-const upload = multer({ dest: '../frontend/api/src/assets/produtos/uploads/' })
+// const upload = multer({ dest: '../frontend/api/src/assets/produtos/uploads/' })
 
 /* CLIENTES */
 
@@ -47,7 +47,7 @@ routes.get('/pedidos', PedidoController.listarPedidos)
 // incluir produto
 routes.post('/produto', ProdutoController.incluirProduto);
 
-routes.post('/produto/upload/:id', upload.single('file'), ProdutoController.uploadImagemProduto);
+// routes.post('/produto/upload/:id', upload.single('file'), ProdutoController.uploadImagemProduto);
 
 // listar produtos
 routes.get('/produtos', ProdutoController.listarProduto);
