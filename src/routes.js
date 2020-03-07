@@ -6,7 +6,7 @@ const ClienteController = require('./controllers/ClienteController');
 const ProdutoController = require('./controllers/ProdutoController');
 const PedidoController = require('./controllers/PedidoController');
 
-// const upload = multer({ dest: '../frontend/api/src/assets/produtos/uploads/' })
+// const upload = multer({ dest: './produtos/uploads/' })
 
 /* CLIENTES */
 
@@ -55,6 +55,10 @@ routes.get('/produtos', ProdutoController.listarProduto);
 // consultar produto por id
 routes.get('/produto/:id', ProdutoController.consultarPorId)
 
+// excluir produto por id
+routes.delete('/produto/:id', ProdutoController.excluirPorId)
 
+// alterar produto por id
+routes.put('/produto/:id', ProdutoController.atualizarProduto)
 
 module.exports = routes;

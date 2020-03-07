@@ -49,5 +49,47 @@ module.exports = {
         })
 
         return res.json(produto);
-    }
+    },
+
+    async excluirPorId(req, res) {
+        const { id } = req.params;
+        console.log('id: ', id);
+
+        const produto = await Produto.destroy({
+            where: {
+                id: id
+            }
+        })
+            .then(produtoDeletado => {
+                console.log(`Has the Max been deleted? 1 means yes, 0 means no: ${produtoDeletado}`);
+            }).
+            catch(erro => {
+                return res.status(400).send({ error: 'Erro ao excluir produto' });
+
+            });
+
+        return res.json(produto);
+    },
+
+    async atualizarProduto(req, res) {
+        const { id } = req.params;
+        const { categoria, nome, descricaoProduto, img, valorUnitario } = req.body;
+        console.log('req.body: ', req.body);
+
+        let produto = {
+            categoria,
+            nome_produto: nome,
+            descricao: descricaoProduto,
+            img,
+            preco_produto: valorUnitario
+        }
+
+        const produtoAtualizado = await Produto.update(produto, {
+            where: {
+                id: id
+            }
+        });
+
+        return res.json(produtoAtualizado);
+    },
 };
