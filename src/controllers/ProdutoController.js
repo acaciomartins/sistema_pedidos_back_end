@@ -30,6 +30,7 @@ module.exports = {
     },
 
     async incluirProduto(req, res) {
+        console.log('req.body: ', req.body);
         const produto = await Produto.create(req.body);
         return res.json(produto);
     },
